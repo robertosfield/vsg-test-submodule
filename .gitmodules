@@ -1,0 +1,3 @@
+[submodule "thirdparty/vsg"]
+	path = thirdparty/vsg
+	url = git@github.com:vsg-dev/VulkanSceneGraph.git

@@ -19,7 +19,7 @@ if (VULKAN_SDK)
     set(ENV{VULKAN_SDK} ${VULKAN_SDK})
 endif()
 
-find_package(vsg 0.4.0 REQUIRED)
+add_subdirectory(thirdparty/vsg)
 
 # find the optional vsgXchange that can be used for reading and range of image and 3d model formats and shader compilation
 find_package(vsgXchange QUIET)
@@ -28,7 +28,7 @@ find_package(vsgXchange QUIET)
 set(CMAKE_CXX_STANDARD 17)
 
 # add clobber build target to clear all the non git registered files/directories
-add_custom_target(clobber
+add_custom_target(clobber-my-first-vsg-application
     COMMAND git clean -d -f -x
 )
 
@@ -38,7 +38,7 @@ set(SOURCES
 
 add_executable(myfirstvsgapplication ${SOURCES})
 
-target_link_libraries(myfirstvsgapplication vsg::vsg)
+target_link_libraries(myfirstvsgapplication vsg)
 
 if (vsgXchange_FOUND)
     target_compile_definitions(myfirstvsgapplication PRIVATE vsgXchange_FOUND)
