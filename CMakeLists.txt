@@ -20,6 +20,9 @@ if (VULKAN_SDK)
 endif()
 
 add_subdirectory(thirdparty/vsg)
+add_subdirectory(thirdparty/osg2vsg)
+add_subdirectory(thirdparty/vsgXchange)
+# add_subdirectory(thirdparty/vsgImGui)
 
 # find the optional vsgXchange that can be used for reading and range of image and 3d model formats and shader compilation
 find_package(vsgXchange QUIET)

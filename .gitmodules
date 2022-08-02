@@ -1,3 +1,12 @@
 [submodule "thirdparty/vsg"]
 	path = thirdparty/vsg
 	url = https://github.com/vsg-dev/VulkanSceneGraph.git
+[submodule "thirdparty/osg2vsg"]
+	path = thirdparty/osg2vsg
+	url = https://github.com/vsg-dev/osg2vsg.git
+[submodule "thirdparty/vsgXchange"]
+	path = thirdparty/vsgXchange
+	url = https://github.com/vsg-dev/vsgXchange.git
+[submodule "thirdparty/vsgImGui"]
+	path = thirdparty/vsgImGui
+	url = https://github.com/vsg-dev/vsgImGui.git
