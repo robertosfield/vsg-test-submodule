@@ -19,16 +19,26 @@ if (VULKAN_SDK)
     set(ENV{VULKAN_SDK} ${VULKAN_SDK})
 endif()
 
+# set the use of C++17 globally as all examples require it
+set(CMAKE_CXX_STANDARD 17)
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/vsg/cmake)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/vsg/src/vsg)
+set(vsg_DIR ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/vsg/src/vsg)
+
+message("\n--- CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}")
+message("--- vsg_DIR = ${vsg_DIR}\n")
+message("--- CMAKE_CURRENT_LIST_DIR = ${CMAKE_CURRENT_LIST_DIR}")
+message("--- CMAKE_CURRENT_LIST_FILE = ${CMAKE_CURRENT_LIST_FILE}")
+
 add_subdirectory(thirdparty/vsg)
-add_subdirectory(thirdparty/osg2vsg)
-add_subdirectory(thirdparty/vsgXchange)
-# add_subdirectory(thirdparty/vsgImGui)
+#add_subdirectory(thirdparty/osg2vsg)
+#add_subdirectory(thirdparty/vsgXchange)
+add_subdirectory(thirdparty/vsgImGui)
 
 # find the optional vsgXchange that can be used for reading and range of image and 3d model formats and shader compilation
 find_package(vsgXchange QUIET)
 
-# set the use of C++17 globally as all examples require it
-set(CMAKE_CXX_STANDARD 17)
 
 # add clobber build target to clear all the non git registered files/directories
 add_custom_target(clobber-my-first-vsg-application
