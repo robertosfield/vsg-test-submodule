@@ -31,14 +31,18 @@ message("--- vsg_DIR = ${vsg_DIR}\n")
 message("--- CMAKE_CURRENT_LIST_DIR = ${CMAKE_CURRENT_LIST_DIR}")
 message("--- CMAKE_CURRENT_LIST_FILE = ${CMAKE_CURRENT_LIST_FILE}")
 
+set(CMAKE_DISABLE_FIND_PACKAGE_vsg TRUE)
+set(CMAKE_DISABLE_FIND_PACKAGE_vsgXchange TRUE)
+
 add_subdirectory(thirdparty/vsg)
 #add_subdirectory(thirdparty/osg2vsg)
-#add_subdirectory(thirdparty/vsgXchange)
-add_subdirectory(thirdparty/vsgImGui)
+add_subdirectory(thirdparty/vsgXchange)
+#add_subdirectory(thirdparty/vsgImGui)
 
 # find the optional vsgXchange that can be used for reading and range of image and 3d model formats and shader compilation
-find_package(vsgXchange QUIET)
-
+#find_package(vsgXchange QUIET)
+#find_package(vsg)
+#find_package(vsgXchange)
 
 # add clobber build target to clear all the non git registered files/directories
 add_custom_target(clobber-my-first-vsg-application
@@ -51,9 +55,10 @@ set(SOURCES
 
 add_executable(myfirstvsgapplication ${SOURCES})
 
-target_link_libraries(myfirstvsgapplication vsg)
+target_link_libraries(myfirstvsgapplication vsg::vsg)
 
 if (vsgXchange_FOUND)
+    message("Using vsgXchange")
     target_compile_definitions(myfirstvsgapplication PRIVATE vsgXchange_FOUND)
     target_link_libraries(myfirstvsgapplication vsgXchange::vsgXchange)
 endif()
